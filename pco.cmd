@@ -1,4 +1,3 @@
-::+++++++++
 @echo off
 setlocal ENABLEDELAYEDEXPANSION
 echo This script is to work around window's shitty command piping limitations(this is easy in linux)
@@ -23,7 +22,10 @@ echo enter command suffix:
 set /p "cmdp3= "
 echo This will execute the following for loop:
 <nul (set/p "_demo=	for /f "usebackq" %%i in (`%cmdp1%`) do %cmdp2% %%i %cmdp3%")
+
+rem leaving this here so I remember not to do it this way:
 rem echo for /f "usebackq" %%i in (`%cmdp1%`) do %cmdp2% %%i %cmdp3%
+
 echo.
 rem choice /M feed result into yet another command? y/N?
 choice /M Proceed?
@@ -38,20 +40,16 @@ echo processing command, please wait..
 goto :pco
 )
 
-rem for /R %%d in (.) do (
-
-
 :pco
 cmd /c "for /f "usebackq" %%i in (`%cmdp1%`) do %cmdp2% %%i %cmdp3%"
 pause
-rem )
 endlocal
 exit /b
 
-:pcoo
-@echo on
-cmd /c "for /f "usebackq" %%i in (`%cmdp4%`) do %cmdp2% %%i %cmdp3%"
-pause
-rem )
-endlocal
-exit /b
+rem :pcoo
+rem @echo on
+rem cmd /c "for /f "usebackq" %%i in (`%cmdp4%`) do %cmdp2% %%i %cmdp3%"
+rem pause
+rem rem )
+rem endlocal
+rem exit /b
