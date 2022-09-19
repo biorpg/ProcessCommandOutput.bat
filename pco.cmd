@@ -23,7 +23,7 @@ set /p "cmdp3= "
 echo This will execute the following for loop:
 <nul (set/p "_demo=	for /f "usebackq" %%i in (`%cmdp1%`) do %cmdp2% %%i %cmdp3%")
 
-rem leaving this here so I remember not to do it this way:
+rem leaving this here so I remember not to do it this way. above method thanks to ss64.com!:
 rem echo for /f "usebackq" %%i in (`%cmdp1%`) do %cmdp2% %%i %cmdp3%
 
 echo.
